@@ -33,7 +33,7 @@
   gap: 5px;
 }
 
-.body > .res-container {
+.res-container {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -59,4 +59,20 @@
   height: 300px;
   object-fit: cover;
   border-radius: 5px;
+}
+
+.menu-card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 8px;
+  padding: 4px;
+  background-color: #f0f0f0;
+}
+
+.menu-img {
+  width: 100px;
+  height: 100px;
+  padding: 4px;
+  object-fit: cover;
 }
