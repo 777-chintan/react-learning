@@ -76,3 +76,9 @@
   padding: 4px;
   object-fit: cover;
 }
+
+.user-card {
+  border: 1px solid gray;
+  background-color: #f0f0f0;
+  padding: 4px;
+}
