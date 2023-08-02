@@ -13,17 +13,8 @@ class User extends React.Component {
     this.setState({ userInfo: json });
   }
 
-  componentDidUpdate() {
-    // console.log(this.props.name + "child didupdate");
-  }
-
-  componentWillUnmount() {
-    // console.log(this.props.name + "child unmount");
-  }
-
   render() {
     const { name, location, avatar_url } = this.state.userInfo;
-    // console.log(this.props.name + "child render");
     return (
       <div className="user-card">
         <img src={avatar_url} />
