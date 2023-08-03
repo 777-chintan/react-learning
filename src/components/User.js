@@ -1,4 +1,5 @@
 import React from "react";
+import UserContext from "../utils/context/UserContext";
 class User extends React.Component {
   constructor(props) {
     super(props);
@@ -16,11 +17,31 @@ class User extends React.Component {
   render() {
     const { name, location, avatar_url } = this.state.userInfo;
     return (
-      <div className="user-card">
-        <img src={avatar_url} />
-        <h2>Name : {name}</h2>
-        {location ? <h2>Location : {location}</h2> : null}
-      </div>
+      <UserContext.Consumer>
+        {({ setUserInfo }) => {
+          return (
+            <div className="user-card">
+              <img src={avatar_url} />
+              <h2>
+                Name :
+                <input
+                  value={name}
+                  type="text"
+                  onChange={(e) => {
+                    this.setState({
+                      userInfo: {
+                        ...this.state.userInfo,
+                        name: e.target.value,
+                      },
+                    });
+                  }}
+                />
+              </h2>
+              {location ? <h2>Location : {location}</h2> : null}
+            </div>
+          );
+        }}
+      </UserContext.Consumer>
     );
   }
 }

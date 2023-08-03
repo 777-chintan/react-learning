@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/hooks/useOnlineStatus";
+import UserContext from "../utils/context/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const onlineStatus = useOnlineStatus();
+  const { userInfo } = useContext(UserContext);
+  const cartItems = useSelector((state) => state.cart.items);
   return (
     <div className="header">
       <div className="logo">
@@ -23,7 +27,9 @@ const Header = () => {
           <li>
             <Link to={"/contact"}>Contact Us</Link>
           </li>
-          <li>Cart</li>
+          <li>
+            <Link to={"/cart"}>Cart({cartItems.length})</Link>
+          </li>
           <button
             onClick={() => {
               setIsLoggedIn((prev) => !prev);
@@ -31,6 +37,7 @@ const Header = () => {
           >
             {isLoggedIn ? "Logout" : "Login"}
           </button>
+          <li>{userInfo.name}</li>
         </ul>
       </div>
     </div>
